@@ -5,6 +5,11 @@ int *ft_realloc_array(int *arr, int old_size, int new_size)
     int *new_arr;
     int i;
 
+    if (new_size <= 0)
+    {
+        return (NULL);
+    }
+
     new_arr = malloc(sizeof(int) * new_size);
     if (new_arr == NULL)
     {
@@ -18,4 +23,13 @@ int *ft_realloc_array(int *arr, int old_size, int new_size)
         i++;
     }
 
+    while (i < new_size)
+    {
+        new_arr[i] = 0;
+        i++;
+    }
+
+    free(arr);
+
+    return (new_arr);
 }
